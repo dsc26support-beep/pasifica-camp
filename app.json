@@ -1,0 +1,55 @@
+{
+  "expo": {
+    "name": "Pasifika Campus",
+    "slug": "pasifika-campus",
+    "scheme": "pasifikacampus",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "icon": "./assets/branding/app-icon.png",
+    "splash": {
+      "image": "./assets/branding/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0D0D0D"
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pasifikacampus.app"
+    },
+    "android": {
+      "package": "com.pasifikacampus.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/branding/adaptive-icon.png",
+        "backgroundColor": "#0D0D0D"
+      }
+    },
+    "web": {
+      "bundler": "metro",
+      "output": "static"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Pasifika Campus needs access to your photos so you can add images to your listings."
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#D4AF37"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    },
+    "extra": {
+      "supabaseUrl": "",
+      "supabaseAnonKey": ""
+    }
+  }
+}
