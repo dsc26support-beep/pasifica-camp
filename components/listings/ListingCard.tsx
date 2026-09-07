@@ -2,7 +2,7 @@
  * Pasifika Campus — Listing card (used in Home rails, search, favourites).
  */
 import React from 'react';
-import { View, StyleSheet, Pressable } from 'react-native';
+import { View, StyleSheet, Pressable, DimensionValue } from 'react-native';
 import { Image } from 'expo-image';
 import { useRouter } from 'expo-router';
 import { Text } from '../ui/Text';
@@ -15,7 +15,7 @@ import type { ListingWithRelations } from '../../types/database';
 
 interface Props {
   listing: ListingWithRelations;
-  width?: number;
+  width?: DimensionValue;
   showStatus?: boolean; // used in "My Listings" to show pending/approved
 }
 
