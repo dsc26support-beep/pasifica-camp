@@ -8,6 +8,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Svg, { Rect, Circle, Path, Line, G } from 'react-native-svg';
 import { Palette } from '../../constants/colors';
+import { Text } from './Text';
 
 export function LogoMark({ size = 48 }: { size?: number }) {
   return (
@@ -40,7 +41,6 @@ export function LogoMark({ size = 48 }: { size?: number }) {
 
 /** Horizontal lockup: mark + wordmark, for headers. */
 export function LogoHorizontal({ size = 32 }: { size?: number }) {
-  const { Text } = require('./Text') as typeof import('./Text');
   return (
     <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
       <LogoMark size={size} />

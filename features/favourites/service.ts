@@ -44,6 +44,6 @@ export async function listFavourites(userId: string) {
     .order('created_at', { ascending: false });
   if (error) throw error;
   return (data ?? [])
-    .map((r) => (r as { listing: ListingWithRelations | null }).listing)
+    .map((r) => (r as unknown as { listing: ListingWithRelations | null }).listing)
     .filter((l): l is ListingWithRelations => !!l);
 }

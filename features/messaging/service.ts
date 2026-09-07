@@ -40,7 +40,11 @@ export async function listConversations(userId: string) {
     .eq('user_id', userId);
   if (error) throw error;
   const convos = (data ?? [])
-    .map((r) => (r as { conversation: { id: string; updated_at: string } | null }).conversation)
+    .map(
+      (r) =>
+        (r as unknown as { conversation: { id: string; updated_at: string } | null })
+          .conversation
+    )
     .filter((c): c is { id: string; updated_at: string } => !!c)
     .sort((a, b) => (a.updated_at < b.updated_at ? 1 : -1));
   return convos;

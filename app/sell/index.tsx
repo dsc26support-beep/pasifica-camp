@@ -5,9 +5,8 @@
  * status and can pause / mark unavailable / delete.
  */
 import React from 'react';
-import { View, ScrollView, StyleSheet, Pressable, Alert } from 'react-native';
-import { useRouter } from 'expo-router';
-import { useFocusEffect } from 'expo-router';
+import { View, ScrollView, StyleSheet, Alert } from 'react-native';
+import { useRouter, useFocusEffect } from 'expo-router';
 import { Screen } from '../../components/ui/Screen';
 import { Text } from '../../components/ui/Text';
 import { Card } from '../../components/ui/Card';
@@ -18,7 +17,6 @@ import { useAsyncData } from '../../hooks/useAsyncData';
 import { getMine, setAvailability, removeListing } from '../../features/listings/service';
 import { useAuth } from '../../features/account/AuthProvider';
 import { formatPrice } from '../../utils/format';
-import { Theme } from '../../constants/colors';
 import { Spacing } from '../../constants/layout';
 
 const OPTIONS = [

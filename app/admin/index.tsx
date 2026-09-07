@@ -24,7 +24,6 @@ import {
   resolveReport,
 } from '../../features/admin/service';
 import { statusLabel } from '../../utils/format';
-import { Theme } from '../../constants/colors';
 import { Spacing } from '../../constants/layout';
 
 export default function AdminScreen() {
