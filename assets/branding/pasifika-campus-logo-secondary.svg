@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pasifika Campus — Secondary / Stacked Logo (light usage)
+  Same emblem, stacked wordmark, for light backgrounds and compact placements.
+  Vector placeholder following the APPROVED direction. Replace with final art.
+-->
+<svg width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pasifika Campus">
+  <rect width="360" height="360" fill="#F2F2F2"/>
+  <g transform="translate(120,40)">
+    <circle cx="60" cy="52" r="26" fill="#D4AF37"/>
+    <path d="M0 132 L60 58 L120 132 Z" fill="#252525"/>
+    <g stroke="#252525" stroke-width="6" fill="none" stroke-linecap="round">
+      <path d="M66 58 q26 -18 56 -12"/>
+      <path d="M66 58 q18 -30 52 -38"/>
+      <path d="M66 58 q-4 -34 -30 -54"/>
+      <path d="M66 58 q-26 -18 -56 -12"/>
+    </g>
+    <path d="M-6 150 q20 -14 40 0 t40 0 t40 0" stroke="#6B6B6B" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M-6 166 q20 -14 40 0 t40 0 t40 0" stroke="#D4AF37" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="180" y="272" text-anchor="middle" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="34" font-weight="700" fill="#0D0D0D">PASIFIKA</text>
+  <text x="180" y="312" text-anchor="middle" font-family="Poppins, Montserrat, Arial, sans-serif" font-size="34" font-weight="700" letter-spacing="6" fill="#0D0D0D">CAMPUS</text>
+</svg>

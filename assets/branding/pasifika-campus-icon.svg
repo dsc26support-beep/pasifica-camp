@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Pasifika Campus — App Icon / Monogram (Logo Concept 1)
+  Stylized "P" monogram on charcoal, gold treatment, with Pacific imagery:
+  sun, palm, ocean waves. This is a clean vector placeholder that follows the
+  APPROVED direction (P-monogram + sun + palm + waves + gold on black) — NOT a
+  generic cart/bag/globe. Replace with the final approved artwork when supplied;
+  keep the same viewBox and colour tokens so layouts stay intact.
+-->
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pasifika Campus">
+  <rect width="512" height="512" rx="112" fill="#0D0D0D"/>
+  <!-- Sun -->
+  <circle cx="256" cy="150" r="46" fill="#D4AF37"/>
+  <g stroke="#D4AF37" stroke-width="8" stroke-linecap="round" opacity="0.85">
+    <line x1="256" y1="70" x2="256" y2="52"/>
+    <line x1="316" y1="90" x2="328" y2="76"/>
+    <line x1="196" y1="90" x2="184" y2="76"/>
+  </g>
+  <!-- Stylized P monogram -->
+  <path d="M176 196 h96 a70 70 0 0 1 0 140 h-52 v92 h-44 z
+           M220 236 v60 h52 a30 30 0 0 0 0 -60 z"
+        fill="#D4AF37"/>
+  <!-- Palm fronds arcing from the P stem -->
+  <g stroke="#D4AF37" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.9">
+    <path d="M198 210 q-34 -30 -78 -22"/>
+    <path d="M198 210 q-22 -40 -62 -54"/>
+    <path d="M198 210 q6 -46 -18 -78"/>
+  </g>
+  <!-- Ocean waves -->
+  <g stroke="#6B6B6B" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M96 404 q40 -26 80 0 t80 0 t80 0 t80 0"/>
+  </g>
+  <g stroke="#D4AF37" stroke-width="10" stroke-linecap="round" fill="none">
+    <path d="M96 440 q40 -26 80 0 t80 0 t80 0 t80 0"/>
+  </g>
+</svg>
