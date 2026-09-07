@@ -23,7 +23,7 @@ import { useAuth } from '../../features/account/AuthProvider';
 import { formatPrice, formatLocation } from '../../utils/format';
 import { publicUrl } from '../../utils/storage';
 import { Theme } from '../../constants/colors';
-import { Spacing, Radius } from '../../constants/layout';
+import { Spacing } from '../../constants/layout';
 
 export default function ListingDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
