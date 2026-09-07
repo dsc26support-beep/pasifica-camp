@@ -8,7 +8,7 @@ import { Screen } from '../../components/ui/Screen';
 import { Text } from '../../components/ui/Text';
 import { Input } from '../../components/ui/Input';
 import { Button } from '../../components/ui/Button';
-import { LogoMark } from '../../components/ui/Logo';
+import { LogoFull } from '../../components/ui/Logo';
 import { signIn } from '../../lib/auth';
 import { signInSchema } from '../../lib/validation';
 import { Spacing } from '../../constants/layout';
@@ -47,12 +47,9 @@ export default function SignInScreen() {
       >
         <ScrollView contentContainerStyle={styles.content} keyboardShouldPersistTaps="handled">
           <View style={styles.logo}>
-            <LogoMark size={72} />
-            <Text variant="h1" style={styles.heading}>
-              Pasifika Campus
-            </Text>
-            <Text variant="body" color="secondary">
-              Find. Discover. Contact.
+            <LogoFull size={200} />
+            <Text variant="body" color="secondary" style={styles.heading}>
+              Local people · Real opportunities · A stronger Pacific
             </Text>
           </View>
 
