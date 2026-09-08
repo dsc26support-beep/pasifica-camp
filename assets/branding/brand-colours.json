@@ -1,0 +1,27 @@
+{
+  "$schema": "Pasifika Campus brand colour tokens (single source of truth)",
+  "primary": {
+    "charcoalBlack": "#0D0D0D",
+    "pacificGold": "#D4AF37"
+  },
+  "secondary": {
+    "darkGrey": "#252525",
+    "mediumGrey": "#6B6B6B",
+    "lightGrey": "#F2F2F2",
+    "white": "#FFFFFF"
+  },
+  "balance": {
+    "black": "40-50%",
+    "grey": "20-30%",
+    "gold": "10-15%",
+    "lightWhite": "5-10%"
+  },
+  "usage": {
+    "charcoalBlack": "Main background, headers, navigation, premium sections",
+    "pacificGold": "Primary buttons, active nav, key CTAs, highlights, selected states — an ACCENT, not the whole UI",
+    "darkGrey": "Cards, surfaces, containers, dividers",
+    "mediumGrey": "Secondary text, muted icons, borders",
+    "lightGrey": "Light backgrounds, inputs, clean content areas",
+    "white": "Primary text on dark, high-contrast content"
+  }
+}
