@@ -9,7 +9,9 @@ black/gold/grey identity.
 **What this environment could and could not verify** (stated plainly, per the
 spec's "do not claim something works unless tested"):
 
-- ✅ Verified here: `tsc --noEmit` clean, `eslint` clean, `jest` 23/23 passing.
+- ✅ Verified here: `tsc --noEmit` clean, `eslint` clean, `jest` 23/23 passing,
+  `npm ci` lockfile in sync. A GitHub Actions workflow now runs these three
+  checks on every push/PR.
 - ⚠️ Not verifiable here: running the Expo app on an Android device/emulator,
   and executing the SQL migrations / RLS against a live Supabase project. Those
   require a provisioned Supabase project + device and are the next step before
@@ -79,12 +81,13 @@ ownership on write; `tips` is admin-write only.
 
 ## 8. Branding assets
 
-`pasifika-campus-icon.svg` (P-monogram), `pasifika-campus-logo-primary.svg`
-(emblem + wordmark), `pasifika-campus-logo-secondary.svg` (stacked),
-`brand-colours.json`. Native `LogoMark` renders the mark in-app.
-**Action needed:** export the three PNGs referenced by `app.json`
-(`app-icon.png`, `adaptive-icon.png`, `splash.png`) — see
-`assets/branding/README.md`.
+The **approved** logo artwork is in `assets/branding/source/` (Logo Option 1
+P-monogram, Options 1&2, brand board) and is used as provided. App assets are
+generated from it by `scripts/gen-branding.js`: `app-icon.png` (P-monogram),
+`adaptive-icon.png`, `splash.png`, plus in-app `pasifika-campus-logo-primary.png`
+and `logo-mark.png`. `components/ui/Logo.tsx` renders the real artwork
+throughout the app (icon/splash/adaptive PNGs referenced by `app.json` now
+exist). `brand-colours.json` holds the colour tokens.
 
 ## 9. Required environment variables
 
@@ -101,21 +104,27 @@ No Meilisearch / MapLibre / PostGIS / AI — deferred per spec.
 
 ## 11. Tests performed
 
-Unit: formatting (price, location, subtotal, status, relative time) and
-validation (auth, product/service/rental discriminated union, report, image
-type/size). Static: typecheck + lint.
+- Unit (jest): formatting (price, location, subtotal, status, relative time) and
+  validation (auth, product/service/rental discriminated union, report, image
+  type/size).
+- Static: `tsc --noEmit`, `eslint`, `npm ci` lockfile sync.
+- CI: `.github/workflows/ci.yml` runs typecheck + lint + test on push/PR.
+- RLS policy suite (pgTAP) authored in `supabase/tests/` covering listing
+  visibility/ownership/self-approval, messaging membership, and privacy/role
+  escalation — runs with `supabase test db` against a local stack.
 
 ## 12. Tests passed
 
-`jest`: **23/23**. `tsc --noEmit`: **clean**. `eslint`: **clean**.
+`jest`: **23/23**. `tsc --noEmit`: **clean**. `eslint`: **clean**. `npm ci`:
+**clean**. (RLS pgTAP suite: authored, runs on a local Supabase stack — not
+executed in this environment; see §13.)
 
 ## 13. Known limitations
 
 - Runtime acceptance tests (§60–63) require a live Supabase project + Android
   device/emulator; **not executed in this environment**.
-- RLS is written and reviewed but not yet exercised against a running database
-  (a policy test suite is recommended — see §14).
-- Logo PNG exports and app-icon/splash raster assets still need generating.
+- The RLS pgTAP suite is authored to match the migrations but has **not** been
+  executed against a running database yet — run `supabase test db` locally.
 - Expo push notifications: notification **rows/triggers** exist; wiring device
   push-token registration + a send path is a small follow-up.
 - Search uses `ILIKE`/trigram (fine for launch volumes); the `search_listings`
