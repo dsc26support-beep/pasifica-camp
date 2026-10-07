@@ -11,9 +11,22 @@ Social → Tracking → Analytics → Optimization`. This turns the project from
 single affiliate website into an Affiliate Marketing Campaign Engine capable of
 managing many offers from one dashboard.
 
+## Locked decisions (v1)
+
+These are confirmed — don't re-litigate without a reason:
+
+| Decision | Choice |
+|---|---|
+| V1 scope | **Core funnel only** — Phase 1 sections below. Content engine, full automation pipeline, and CRO testing are Phase 2, after one campaign proves it converts. |
+| AI content API | **Google Gemini API** — same vendor as the Sheets/Drive/Apps Script stack, one Google Cloud billing account, called from Apps Script over HTTPS. |
+| Email system | **Custom-built**, not a SaaS ESP — Apps Script owns the reusable-template, unsubscribe, and tagging/segmentation logic in-house. |
+| Email send API | **Resend** — sends the actual messages; Apps Script calls its REST API over HTTPS. |
+
+Each section below is tagged **Phase 1 (v1)** or **Phase 2 (later)**.
+
 ---
 
-## 1. Offer & Affiliate Setup
+## 1. Offer & Affiliate Setup — Phase 1 (v1)
 
 - [ ] Affiliate network/account
 - [ ] Affiliate offer/product
@@ -26,7 +39,7 @@ managing many offers from one dashboard.
 - [ ] Allowed/prohibited traffic sources
 - [ ] Affiliate disclosure requirements
 
-## 2. Funnel Website
+## 2. Funnel Website — Phase 1 (v1)
 
 - [ ] Custom domain
 - [ ] Fast, mobile-first landing page
@@ -43,7 +56,7 @@ managing many offers from one dashboard.
 - [ ] Terms of use
 - [ ] Contact page
 
-## 3. Lead Capture
+## 3. Lead Capture — Phase 1 (v1)
 
 Don't send every visitor directly to the affiliate offer.
 
@@ -55,7 +68,14 @@ Don't send every visitor directly to the affiliate offer.
 - [ ] Lead database
 - [ ] Segmentation/tags
 
-## 4. Email Funnel
+## 4. Email Funnel — Phase 1 (v1)
+
+Custom-built on Apps Script + Resend (not a SaaS ESP). Apps Script owns the
+logic below; Resend only sends.
+
+- [ ] Reusable campaign/template system (write once, reuse across campaigns)
+- [ ] Unsubscribe link + suppression list, honored on every send
+- [ ] Tagging/segmentation (per-lead tags drive which sequence/step sends)
 
 Basic automated sequence:
 
@@ -72,18 +92,19 @@ Basic automated sequence:
 
 Supporting infrastructure:
 
-- [ ] Automated triggers
-- [ ] Delays
-- [ ] Segmentation
-- [ ] Open/click tracking
-- [ ] Unsubscribe handling
-- [ ] Deliverability controls
+- [ ] Automated triggers (Apps Script time-based triggers)
+- [ ] Delays (step scheduling per lead, tracked in Sheets)
+- [ ] Segmentation (tags from above)
+- [ ] Open/click tracking (via Resend webhooks/events)
+- [ ] Unsubscribe handling (suppression list checked before every send)
+- [ ] Deliverability controls (verified sending domain, SPF/DKIM via Resend)
 
-## 5. Content Engine
+## 5. Content Engine — Phase 2 (later)
 
-The funnel needs traffic.
+The funnel needs traffic. Deferred until the core funnel (Phase 1) proves it
+converts at least one offer.
 
-- [ ] Blog/article generator
+- [ ] Blog/article generator (Gemini API)
 - [ ] Product reviews
 - [ ] Comparison articles
 - [ ] How-to articles
@@ -97,11 +118,12 @@ The funnel needs traffic.
 - [ ] Internal linking
 - [ ] Content calendar
 
-## 6. Traffic Sources
+## 6. Traffic Sources — Phase 1 scoped, Phase 2 expanded
 
 Choose according to the affiliate program's rules. **Some programs prohibit
 certain traffic methods, brand bidding, email promotion, or direct linking —
-verify per offer.**
+verify per offer.** Phase 1 ships with one or two channels proven out; the
+rest are Phase 2 expansion once the funnel converts.
 
 - [ ] Google/SEO
 - [ ] TikTok
@@ -113,7 +135,7 @@ verify per offer.**
 - [ ] Email
 - [ ] Paid advertising (where permitted)
 
-## 7. Tracking & Analytics
+## 7. Tracking & Analytics — Phase 1 (v1)
 
 Know exactly what produces commissions.
 
@@ -130,7 +152,7 @@ Know exactly what produces commissions.
 - [ ] EPC (earnings-per-click) tracking
 - [ ] ROI tracking for paid traffic
 
-## 8. Conversion Optimization
+## 8. Conversion Optimization — Phase 2 (later)
 
 - [ ] A/B testing
 - [ ] CTA testing
@@ -143,9 +165,10 @@ Know exactly what produces commissions.
 - [ ] Mobile optimization
 - [ ] Page-speed optimization
 
-## 9. Automation ("lazy affiliate system")
+## 9. Automation ("lazy affiliate system") — Phase 2 (later)
 
-This is where the biggest leverage comes from.
+This is where the biggest leverage comes from, once Phase 1 proves the funnel
+converts. Powered by the Gemini API connected to Apps Script.
 
 **Input:** affiliate URL + vendor information
 
@@ -175,7 +198,7 @@ This is where the biggest leverage comes from.
 - [ ] Content refreshes
 - [ ] Underperforming campaign alerts
 
-## 10. Compliance & Trust
+## 10. Compliance & Trust — Phase 1 (v1)
 
 Don't skip this.
 
@@ -191,9 +214,9 @@ Don't skip this.
 - [ ] Respect vendor affiliate terms
 - [ ] Respect platform advertising policies
 
-## 11. Technical Infrastructure
+## 11. Technical Infrastructure — Phase 1 (v1)
 
-Low-cost architecture target:
+Low-cost architecture, locked:
 
 | Layer | Choice |
 |---|---|
@@ -201,8 +224,8 @@ Low-cost architecture target:
 | Backend/automation | Google Apps Script |
 | Database (initial) | Google Sheets |
 | Analytics | GA4 + custom campaign tracking |
-| Email | Dedicated email provider/API (not Gmail as the marketing engine) |
-| AI/content | AI API connected to Apps Script |
+| Email sending | Resend API (custom templates/unsubscribe/tagging owned in Apps Script, not Gmail) |
+| AI/content | Google Gemini API, connected to Apps Script |
 | Scheduler | Apps Script triggers |
 | Dashboard | Web dashboard + Google Sheets administration |
 
@@ -210,12 +233,14 @@ Low-cost architecture target:
 - [ ] Apps Script backend/automation project
 - [ ] Google Sheets as initial database
 - [ ] GA4 + campaign tracking wired in
-- [ ] Email provider/API integrated (separate from Gmail)
-- [ ] AI API connected to Apps Script for content generation
+- [ ] Resend API integrated via Apps Script (custom template/unsubscribe/tagging logic, separate from Gmail)
+- [ ] Gemini API connected to Apps Script for content generation
 - [ ] Apps Script time-based triggers for scheduling
 - [ ] Web dashboard reading/writing Sheets
 
 ## 12. Affiliate Funnel Architecture
+
+The end-state funnel shape once Phase 1 and Phase 2 are both built:
 
 ```
 Traffic
@@ -251,6 +276,8 @@ More content automatically generated around winning topics
 
 ## Status
 
-All items above are open (v1 scope not yet built). Check items off in PRs as
-they land, and keep this file as the canonical scope reference for the
-campaign-centric Affiliate Marketing Campaign Engine.
+**Locked:** scope (Phase 1/Phase 2 split above), AI API (Gemini), email
+approach (custom-built via Apps Script + Resend). All checklist items are
+still open — v1 (Phase 1) not yet built. Check items off in PRs as they land,
+and keep this file as the canonical scope reference for the campaign-centric
+Affiliate Marketing Campaign Engine.
